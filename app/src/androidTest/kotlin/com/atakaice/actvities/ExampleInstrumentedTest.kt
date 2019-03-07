@@ -1,4 +1,4 @@
-package com.atakaice.atakaice
+package com.atakaice.actvities
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

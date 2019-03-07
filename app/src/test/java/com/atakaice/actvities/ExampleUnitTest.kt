@@ -1,4 +1,4 @@
-package com.atakaice.atakaice
+package com.atakaice.actvities
 
 import org.junit.Test
 
