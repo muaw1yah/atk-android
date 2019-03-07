@@ -3,7 +3,7 @@ package com.atakaice.commons.adapter
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import com.atakaice.R
-import com.atakaice.commons.inflate
+import com.atakaice.commons.extensions.inflate
 
 class LoadingDelegateAdapter: ViewTypeDelegateAdapter {
     override fun onCreateViewHolder(parent: ViewGroup) = TurnsViewHolder(parent)

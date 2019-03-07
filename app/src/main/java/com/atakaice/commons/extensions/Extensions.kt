@@ -1,6 +1,6 @@
 @file:JvmName("ExtensionsUtils")
 
-package com.atakaice.commons
+package com.atakaice.commons.extensions
 
 import android.text.TextUtils
 import android.view.LayoutInflater
