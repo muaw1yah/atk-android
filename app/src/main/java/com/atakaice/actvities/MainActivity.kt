@@ -11,8 +11,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.atakaice.R
-import com.atakaice.fragments.NewsFragment
-import kotlinx.android.synthetic.main.activity_main.*
+import com.atakaice.features.news.NewsFragment
 
 class MainActivity : AppCompatActivity() {
 
