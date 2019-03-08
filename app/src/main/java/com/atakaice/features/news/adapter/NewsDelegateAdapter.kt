@@ -27,10 +27,10 @@ class NewsDelegateAdapter: ViewTypeDelegateAdapter {
     ) {
 
         fun bind(item: NewsItem) = with(itemView) {
-            img_thumbnail.loading(item.thumbnail)
+            img_thumbnail.loading(item.files.get(0))
             description.text = item.title
             author.text = item.author
-            time.text = item.created.getFriendlyTime()
+            // time.text = item.pubDate.toLong().getFriendlyTime()
         }
 
     }
