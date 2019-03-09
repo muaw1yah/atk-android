@@ -19,7 +19,6 @@ class RestAPI() {
     }
 
     fun getNews(after: String, limit: String): Call<NewsResponse> {
-        Log.i("RestAPI L22 AFTER", after)
         return newsApi.getTop(after, limit)
     }
 }

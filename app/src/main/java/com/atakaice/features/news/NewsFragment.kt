@@ -46,13 +46,11 @@ class NewsFragment : RxBaseFragment() {
 
     private fun requestNews() {
         // (news_list.adapter as NewsAdapter).addNews(news)
-        Log.i("NewsFragment L49 AFTER", news?.after ?: "")
         val subscription = newsManager.getNews(news?.after ?: "", "10")
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {retrievedNews ->
                     news = retrievedNews
-                    Log.i("NewsFragment L14 AFTER", news?.after)
                     (news_list.adapter as NewsAdapter).addNews(retrievedNews.news)},
                 {e -> Snackbar.make(news_list, e.message ?: "", Snackbar.LENGTH_LONG).show()
                 Log.e("CONNECTION", e.message ?: "")}

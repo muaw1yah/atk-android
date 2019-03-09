@@ -12,7 +12,6 @@ import rx.Observable
 class NewsManager(private val api: RestAPI = RestAPI()) {
 
     fun getNews(after: String, limit: String = "10"): Observable<News> {
-        Log.i("NewsManager L14 AFTER", after)
         return Observable.create {
                 subscriber ->
             val callResponse = api.getNews(after, limit)
@@ -28,7 +27,6 @@ class NewsManager(private val api: RestAPI = RestAPI()) {
                     )
                 }
 
-                Log.i("NewsManager L31 AFTER", dataResponse.after)
                 val news = News(
                     dataResponse.after ?: "",
                     dataResponse.before ?: "",
