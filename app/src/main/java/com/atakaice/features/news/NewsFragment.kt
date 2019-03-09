@@ -2,13 +2,11 @@ package com.atakaice.features.news
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import com.atakaice.R
 import com.atakaice.commons.InfiniteScrollListener
 import com.atakaice.commons.News
@@ -16,12 +14,15 @@ import com.atakaice.commons.RxBaseFragment
 import com.atakaice.features.news.adapter.NewsAdapter
 import com.atakaice.commons.extensions.inflate
 import kotlinx.android.synthetic.main.fragment_news.*
-import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
 class NewsFragment : RxBaseFragment() {
 
-    private var news: News? = null
+    companion object {
+        private val KEY_NEWS = "news"
+    }
+
+    private var apiNews: News? = null
     private val newsManager by lazy { NewsManager() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -31,26 +32,39 @@ class NewsFragment : RxBaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        news_list.setHasFixedSize(true)
-        var linearLayout = LinearLayoutManager(context)
-        news_list.layoutManager = linearLayout
-        news_list.clearOnScrollListeners()
-        news_list.addOnScrollListener(InfiniteScrollListener({ requestNews() }, linearLayout))
+        news_list.apply {
+            setHasFixedSize(true)
+            var linearLayout = LinearLayoutManager(context)
+            layoutManager = linearLayout
+            clearOnScrollListeners()
+            addOnScrollListener(InfiniteScrollListener({ requestNews() }, linearLayout))
+        }
 
         initAdapter()
 
-        if (savedInstanceState == null) {
+        if (savedInstanceState != null && savedInstanceState.containsKey(KEY_NEWS)) {
+            apiNews = savedInstanceState.get(KEY_NEWS) as News
+            (news_list as NewsAdapter).clearAndAddNews(apiNews!!.news)
+        } else {
             requestNews()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        val news = (news_list.adapter as NewsAdapter).getNews()
+        if(apiNews != null && news.isNotEmpty()) {
+            outState.putParcelable(KEY_NEWS, apiNews?.copy(news = news))
         }
     }
 
     private fun requestNews() {
         // (news_list.adapter as NewsAdapter).addNews(news)
-        val subscription = newsManager.getNews(news?.after ?: "", "10")
+        val subscription = newsManager.getNews(apiNews?.after ?: "", "10")
             .subscribeOn(Schedulers.io())
             .subscribe(
                 {retrievedNews ->
-                    news = retrievedNews
+                    apiNews = retrievedNews
                     (news_list.adapter as NewsAdapter).addNews(retrievedNews.news)},
                 {e -> Snackbar.make(news_list, e.message ?: "", Snackbar.LENGTH_LONG).show()
                 Log.e("CONNECTION", e.message ?: "")}
