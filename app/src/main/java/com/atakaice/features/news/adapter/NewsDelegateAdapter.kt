@@ -3,12 +3,11 @@ package com.atakaice.features.news.adapter
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import com.atakaice.R
+import com.atakaice.commons.NewsItem
 import com.atakaice.commons.adapter.ViewType
 import com.atakaice.commons.adapter.ViewTypeDelegateAdapter
-import com.atakaice.commons.extensions.getFriendlyTime
 import com.atakaice.commons.extensions.inflate
 import com.atakaice.commons.extensions.loading
-import com.atakaice.commons.models.NewsItem
 import kotlinx.android.synthetic.main.news_item.view.*
 
 class NewsDelegateAdapter: ViewTypeDelegateAdapter {

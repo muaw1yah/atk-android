@@ -1,5 +1,6 @@
 package com.atakaice.api
 
+import android.util.Log
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -18,6 +19,7 @@ class RestAPI() {
     }
 
     fun getNews(after: String, limit: String): Call<NewsResponse> {
+        Log.i("RestAPI L22 AFTER", after)
         return newsApi.getTop(after, limit)
     }
 }

@@ -7,5 +7,5 @@ import retrofit2.http.Query
 interface NewsApi {
     @GET("/api")
     fun getTop(@Query("cursor") after: String,
-               @Query("limit") limit: String): Call<NewsResponse>
+               @Query("limit") limit: String = "10"): Call<NewsResponse>
 }

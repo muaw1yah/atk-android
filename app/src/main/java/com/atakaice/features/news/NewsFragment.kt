@@ -8,7 +8,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import com.atakaice.R
+import com.atakaice.commons.InfiniteScrollListener
+import com.atakaice.commons.News
 import com.atakaice.commons.RxBaseFragment
 import com.atakaice.features.news.adapter.NewsAdapter
 import com.atakaice.commons.extensions.inflate
@@ -18,6 +21,7 @@ import rx.schedulers.Schedulers
 
 class NewsFragment : RxBaseFragment() {
 
+    private var news: News? = null
     private val newsManager by lazy { NewsManager() }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -28,7 +32,11 @@ class NewsFragment : RxBaseFragment() {
         super.onActivityCreated(savedInstanceState)
 
         news_list.setHasFixedSize(true)
-        news_list.layoutManager = LinearLayoutManager(context)
+        var linearLayout = LinearLayoutManager(context)
+        news_list.layoutManager = linearLayout
+        news_list.clearOnScrollListeners()
+        news_list.addOnScrollListener(InfiniteScrollListener({ requestNews() }, linearLayout))
+
         initAdapter()
 
         if (savedInstanceState == null) {
@@ -38,10 +46,14 @@ class NewsFragment : RxBaseFragment() {
 
     private fun requestNews() {
         // (news_list.adapter as NewsAdapter).addNews(news)
-        val subscription = newsManager.getNews()
+        Log.i("NewsFragment L49 AFTER", news?.after ?: "")
+        val subscription = newsManager.getNews(news?.after ?: "", "10")
             .subscribeOn(Schedulers.io())
             .subscribe(
-                {retrievedNews -> (news_list.adapter as NewsAdapter).addNews(retrievedNews)},
+                {retrievedNews ->
+                    news = retrievedNews
+                    Log.i("NewsFragment L14 AFTER", news?.after)
+                    (news_list.adapter as NewsAdapter).addNews(retrievedNews.news)},
                 {e -> Snackbar.make(news_list, e.message ?: "", Snackbar.LENGTH_LONG).show()
                 Log.e("CONNECTION", e.message ?: "")}
             )
