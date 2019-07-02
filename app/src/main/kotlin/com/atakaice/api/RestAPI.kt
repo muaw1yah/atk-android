@@ -19,6 +19,6 @@ class RestAPI() {
     }
 
     fun getNews(after: String, limit: String): Call<NewsResponse> {
-        return newsApi.getTop(after, limit)
+        return newsApi.getNews(after, limit)
     }
 }

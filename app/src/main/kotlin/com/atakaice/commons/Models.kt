@@ -40,7 +40,7 @@ data class News(
 data class NewsItem(
     val author: String,
     val title: String,
-//    val pubDate: Date,
+    val pubDate: Long,
     val link: String,
     val description: String,
     val category: String,
@@ -55,7 +55,7 @@ data class NewsItem(
     constructor(parcelIn: Parcel) : this(
         parcelIn.readString(),
         parcelIn.readString(),
-        // parcelIn.readString(),
+        parcelIn.readLong(),
         parcelIn.readString(),
         parcelIn.readString(),
         parcelIn.readString(),
@@ -65,6 +65,7 @@ data class NewsItem(
     override fun writeToParcel(dest: Parcel, p1: Int) {
         dest.writeString(author)
         dest.writeString(title)
+        dest.writeLong(pubDate)
         dest.writeString(link)
         dest.writeString(description)
         dest.writeString(category)

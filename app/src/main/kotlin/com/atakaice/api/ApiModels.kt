@@ -6,9 +6,8 @@ class NewsResponse(val data: DataResponse)
 
 class DataResponse(
     val children: List<ChildrenResponse>,
-    val size: Int?,
     val before: String?,
-    val after: String
+    val after: String?
 )
 
 
@@ -16,7 +15,7 @@ class ChildrenResponse(
     val author: String,
     val title: String,
     val description: String,
-//    val pubDate: Long,
+    val pubDate: String,
     val files: List<String>,
     val link: String,
     val category: String

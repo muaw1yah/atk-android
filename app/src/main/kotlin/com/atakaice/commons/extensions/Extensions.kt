@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.atakaice.R
+import com.atakaice.commons.CircleTransform
 import com.squareup.picasso.Picasso
 
 
@@ -18,11 +19,16 @@ fun ViewGroup.inflate(layoutId: Int, attachToRoot: Boolean = false): View {
 }
 
 fun ImageView.loading(imageUrl: String) {
-    if(TextUtils.isEmpty(imageUrl)) {
-        Picasso.with(context).load(R.mipmap.ic_launcher).into(this)
-    } else {
-        Picasso.with(context).load(imageUrl).into(this)
-    }
+    Picasso.with(context).load(imageUrl)
+        .centerCrop()
+        .transform(CircleTransform(50,0))
+        .fit()
+        .placeholder(R.drawable.progress_animation).into(this)
+//    if(TextUtils.isEmpty(imageUrl)) {
+//        Picasso.with(context).load(R.mipmap.ic_launcher).into(this)
+//    } else {
+//        Picasso.with(context).load(imageUrl).into(this)
+//    }
 }
 
 inline fun <reified T : Parcelable> createParcel(
