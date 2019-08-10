@@ -1,6 +1,6 @@
 package com.atakaice.features.news.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import com.atakaice.R
 import com.atakaice.commons.NewsItem

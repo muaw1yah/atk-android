@@ -1,6 +1,6 @@
 package com.atakaice.commons
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import rx.subscriptions.CompositeSubscription
 
 open class RxBaseFragment() : Fragment() {

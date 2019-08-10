@@ -4,19 +4,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="5dip">
+                android:padding="16dip">
 
 
     <!-- Left Thumbnail image -->
 
     <ImageView
             android:id="@+id/img_thumbnail"
-            android:layout_width="70dip"
-            android:layout_height="70dip"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="10dp" />
+            android:layout_width="100dip"
+            android:layout_height="100dip"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="0dp" />
 
     <!-- Description -->
 
