@@ -10,18 +10,31 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.atakaice.R
-import com.squareup.picasso.Picasso
-
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 
 fun ViewGroup.inflate(layoutId: Int, attachToRoot: Boolean = false): View {
     return LayoutInflater.from(context).inflate(layoutId, this, attachToRoot)
 }
 
 fun ImageView.loading(imageUrl: String) {
+
+    val requestOption = RequestOptions()
+        .placeholder(R.drawable.design_fab_background).centerCrop()
+
     if(TextUtils.isEmpty(imageUrl)) {
-        Picasso.with(context).load(R.mipmap.ic_launcher).into(this)
+        Glide.with(context)
+            .load(R.mipmap.ic_launcher_round)
+            .into(this)
     } else {
-        Picasso.with(context).load(imageUrl).into(this)
+        Glide.with(context)
+            .load(imageUrl)
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .apply(requestOption)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .into(this)
     }
 }
 

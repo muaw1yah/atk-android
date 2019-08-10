@@ -11,7 +11,7 @@ class RestAPI() {
 
     init {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://atakaice.com")
+            .baseUrl("https://duniyarhausa.appspot.com")
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
 

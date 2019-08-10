@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import com.atakaice.R
 import com.atakaice.features.news.NewsFragment
+import com.atakaice.features.news_cards.NewsCardsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -75,13 +76,12 @@ class MainActivity : AppCompatActivity() {
         // Create a new fragment and specify the fragment to show based on nav item clicked
             when (menuItem.itemId) {
                 R.id.nav_news_fragment -> changeFragment(NewsFragment())
-                //            case R.id.nav_settings_fragment:
-                //                fragmentClass = SecondFragment.class;
-                //                break;
+
+                R.id.nav_settings_fragment -> changeFragment(NewsCardsFragment())
                 //            case R.id.nav_about_fragment:
                 //                fragmentClass = ThirdFragment.class;
                 //                break;
-                else -> changeFragment(NewsFragment())
+                else -> changeFragment(NewsCardsFragment())
             }
 
         // Highlight the selected item has been done by NavigationView
