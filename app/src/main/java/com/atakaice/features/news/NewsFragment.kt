@@ -59,7 +59,6 @@ class NewsFragment : RxBaseFragment() {
     }
 
     private fun requestNews() {
-        // (news_list.adapter as NewsAdapter).addNews(news)
         val subscription = newsManager.getNews(apiNews?.after ?: "", "10")
             .subscribeOn(Schedulers.io())
             .subscribe(

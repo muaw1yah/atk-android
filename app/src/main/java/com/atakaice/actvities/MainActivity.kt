@@ -11,8 +11,9 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import android.view.MenuItem
 import com.atakaice.R
+import com.atakaice.features.news.NewsCardFragment
+import com.atakaice.features.news.NewsCardsFragment
 import com.atakaice.features.news.NewsFragment
-import com.atakaice.features.news_cards.NewsCardsFragment
 
 class MainActivity : AppCompatActivity() {
 
