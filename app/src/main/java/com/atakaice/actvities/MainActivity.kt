@@ -35,9 +35,9 @@ class MainActivity : AppCompatActivity() {
 
         // Find our drawer view
         drawerLayout = findViewById(R.id.drawer_layout)
-        drawerToggle = setupDrawerToggle()
-        drawerLayout?.addDrawerListener(drawerToggle!!)
-        drawerToggle?.syncState()
+        //drawerToggle = setupDrawerToggle()
+//        drawerLayout?.addDrawerListener(drawerToggle!!)
+//        drawerToggle?.syncState()
 
         nvDrawer = findViewById(R.id.nvView)
         // Setup drawer view
@@ -60,11 +60,11 @@ class MainActivity : AppCompatActivity() {
         ft.commit()
     }
 
-    private fun setupDrawerToggle(): ActionBarDrawerToggle {
-        // NOTE: Make sure you pass in a valid toolbar reference.  ActionBarDrawToggle() does not require it
-        // and will not render the hamburger icon without it.
-        return ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close)
-    }
+//    private fun setupDrawerToggle(): ActionBarDrawerToggle {
+//        // NOTE: Make sure you pass in a valid toolbar reference.  ActionBarDrawToggle() does not require it
+//        // and will not render the hamburger icon without it.
+//        return ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close)
+//    }
 
     private fun setupDrawerContent(navigationView: NavigationView) {
         navigationView.setNavigationItemSelectedListener { menuItem ->

@@ -1,5 +1,6 @@
 package com.atakaice.features.news.adapter
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import com.atakaice.R
@@ -29,7 +30,7 @@ class NewsCardDelegateAdapter: ViewTypeCardsDelegateAdapter {
         fun bind(item: NewsItem) = with(itemView) {
             img_thumbnail.loading(item.files.get(0))
             description.text = item.title
-            author.text = item.author
+            //author.text = item.author
             // time.text = item.pubDate.toLong().getFriendlyTime()
         }
 

@@ -66,7 +66,7 @@ class NewsFragment : RxBaseFragment() {
                     apiNews = retrievedNews
                     (news_list.adapter as NewsAdapter).addNews(retrievedNews.news)},
                 {e -> Snackbar.make(news_list, e.message ?: "", Snackbar.LENGTH_LONG).show()
-                Log.e("CONNECTION", e.message ?: "")}
+                Log.e("CONNECTION 81", e.message ?: "")}
             )
 
         subscriptions.add(subscription)

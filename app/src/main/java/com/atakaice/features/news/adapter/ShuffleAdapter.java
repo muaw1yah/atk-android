@@ -5,15 +5,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.collection.SparseArrayCompat;
 import com.atakaice.R;
-import com.atakaice.commons.News;
 import com.atakaice.commons.NewsItem;
 import com.atakaice.commons.adapter.*;
 import com.meetic.shuffle.Shuffle;
+import com.atakaice.features.news.adapter.NewsCardDelegateAdapter.TurnsViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShuffleAdapter extends Shuffle.Adapter {
+public class ShuffleAdapter extends Shuffle.Adapter<TurnsViewHolder> {
 
     private List<ViewType> items = new ArrayList<>();
     private SparseArrayCompat<ViewTypeCardsDelegateAdapter> delegateAdapters = new SparseArrayCompat<>();
@@ -33,18 +33,19 @@ public class ShuffleAdapter extends Shuffle.Adapter {
     }
 
     @Override
-    public Shuffle.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int type) {
+    public TurnsViewHolder onCreateViewHolder(ViewGroup viewGroup, int type) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.news_card, viewGroup, false);
-        return new Shuffle.ViewHolder(view);
+        return new TurnsViewHolder((ViewGroup) view);
     }
 
     @Override
-    public void onBindViewHolder(Shuffle.ViewHolder viewHolder, int position) {
-        if(getItemViewType(position) == 1) {
-
-        } else {
-
-        }
+    public void onBindViewHolder(TurnsViewHolder viewHolder, int position) {
+//        if(getItemViewType(position) == 1) {
+//            NewsItem item = this.items.get(position);
+//
+//        } else {
+//
+//        }
         delegateAdapters.get(getItemViewType(position)).onBindViewHolder(viewHolder, this.items.get(position));
     }
 

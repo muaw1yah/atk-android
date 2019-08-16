@@ -1,10 +1,12 @@
 package com.atakaice.features.news.adapter
 
+import android.util.Log
 import androidx.collection.SparseArrayCompat
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import com.atakaice.commons.NewsItem
 import com.atakaice.commons.adapter.*
+import java.lang.Exception
 
 class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -45,14 +47,18 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     fun addNews(news: List<NewsItem>) {
         // first remove loading and notify
-        val initPosition = items.size - 1
-        items.removeAt(initPosition)
-        notifyItemRemoved(initPosition)
+        try {
+            val initPosition = items.size - 1
+            items.removeAt(initPosition)
+            notifyItemRemoved(initPosition)
 
-        // insert news and the loading at the end of the list
-        items.addAll(news)
-        items.add(loadingItem)
-        notifyItemRangeChanged(initPosition, items.size + 1 /* plus loading item */)
+            // insert news and the loading at the end of the list
+            items.addAll(news)
+            items.add(loadingItem)
+            notifyItemRangeChanged(initPosition, items.size + 1 /* plus loading item */)
+        } catch (e: Exception) {
+            Log.e("ADD TO LIST", e.message)
+        }
     }
 
     fun clearAndAddNews(news: List<NewsItem>) {

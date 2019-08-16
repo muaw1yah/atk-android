@@ -1,50 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="5dip">
+<LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dip"
+        xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ImageView
             android:id="@+id/img_thumbnail"
-            android:layout_width="200dp"
-            android:layout_height="200dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="400dp"/>
 
-    <TextView android:layout_width="match_parent"
-              android:text="Hi there"
-              android:id="@+id/description"
-              android:textSize="50sp"
-              android:gravity="center"
-              android:background="@color/cardview_dark_background"
-              android:layout_height="700dp"/>
+    <!-- Description -->
+    <TextView
+            android:id="@+id/description"
+            android:textColor="#040404"
+            android:textSize="15sp"
+            android:typeface="sans"
+            android:layout_alignStart="@+id/img_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"/>
 
     <!-- Author -->
-
     <TextView
             android:id="@+id/author"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/description"
-            android:layout_alignStart="@+id/description"
-            android:layout_below="@+id/description"
             android:textColor="#343434"
-            android:textSize="10sp"
-            tools:ignore="SmallSp"
-            tools:text="Author 123" />
+            android:textSize="10sp"/>
 
     <!-- Time -->
-
     <TextView
             android:id="@+id/time"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/author"
-            android:layout_alignStart="@+id/author"
-            android:layout_below="@+id/author"
             android:textColor="#343434"
-            android:textSize="10sp"
-            tools:ignore="SmallSp"
-            tools:text="12 hours ago" />
-
-</RelativeLayout>
+            android:textSize="10sp"/>
+</LinearLayout>

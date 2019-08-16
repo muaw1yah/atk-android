@@ -6,12 +6,12 @@ import android.util.Log
 
 class InfiniteScrollListener(
     val func: () -> Unit,
-    val layoutManager: LinearLayoutManager
+    private val layoutManager: LinearLayoutManager
 ) : RecyclerView.OnScrollListener() {
 
     private var previousTotal = 0
     private var loading = true
-    private var visibleThreshold = 2
+    private var visibleThreshold = 3
     private var firstVisibleItem = 0
     private var visibleItemCount = 0
     private var totalItemCount = 0
@@ -20,14 +20,14 @@ class InfiniteScrollListener(
         super.onScrolled(recyclerView, dx, dy)
 
         if (dy > 0) {
-            visibleItemCount = recyclerView.childCount;
-            totalItemCount = layoutManager.itemCount;
-            firstVisibleItem = layoutManager.findFirstVisibleItemPosition();
+            visibleItemCount = recyclerView.childCount
+            totalItemCount = layoutManager.itemCount
+            firstVisibleItem = layoutManager.findFirstVisibleItemPosition()
 
             if (loading) {
                 if (totalItemCount > previousTotal) {
-                    loading = false;
-                    previousTotal = totalItemCount;
+                    loading = false
+                    previousTotal = totalItemCount
                 }
             }
             if (!loading && (totalItemCount - visibleItemCount)

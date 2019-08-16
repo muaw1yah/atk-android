@@ -78,7 +78,7 @@ class NewsCardFragment : RxBaseFragment() {
                     //(news_list.adapter as NewsAdapter).addNews(retrievedNews.news)},
                     (shuffle as ShuffleAdapter).addNews(retrievedNews.news) },
                 {e -> Snackbar.make(shuffle, e.message ?: "", Snackbar.LENGTH_LONG).show()
-                Log.e("CONNECTION", e.message ?: "")}
+                Log.e("CONNECTION 81", e.message ?: "")}
             )
 
         subscriptions.add(subscription)

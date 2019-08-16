@@ -16,11 +16,12 @@ class ChildrenResponse(
     val author: String,
     val title: String,
     val description: String,
-//    val pubDate: Long,
+    val pubDate: String,
     val files: List<String>,
     val link: String,
     val category: String
-)
+) {
+}
 
 class NewsDataResponse(
     val author: String,

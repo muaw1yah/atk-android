@@ -22,7 +22,7 @@ class NewsManager(private val api: RestAPI = RestAPI()) {
                 val newsRes = dataResponse.children.map {
                     val item = it
                     NewsItem(
-                        item.author, item.title, item.link, item.description,
+                        item.author, item.title, item.pubDate, item.link, item.description,
                         item.category, item.files
                     )
                 }
