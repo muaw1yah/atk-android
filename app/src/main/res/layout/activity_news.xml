@@ -1,0 +1,114 @@
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="#fff"
+        android:orientation="vertical">
+
+    <LinearLayout
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <ImageView
+                android:id="@+id/img_thumbnail"
+                android:layout_alignParentTop="true"
+                android:minHeight="250dp"
+                android:maxHeight="300dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <LinearLayout
+                android:padding="20dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+        <TextView
+                android:id="@+id/titleText"
+                android:textColor="#000"
+                android:textSize="21sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/news_title_placeholder"/>
+
+        <TextView
+                android:id="@+id/descriptionText"
+                android:layout_width="match_parent"
+                android:textSize="19sp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_light"
+                android:text="@string/news_description_placeholder"
+                android:layout_marginTop="10dp"/>
+
+        <TextView
+                android:id="@+id/timeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/publish_time_placeholder"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:fontFamily="@font/roboto_condensed"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/readNews"
+            android:layout_alignParentBottom="true"
+            android:text="Ci gaba da karanta wannan labarin"
+            android:textColor="#fff"
+            android:background="@drawable/coffee_bg"
+            android:textSize="17sp"
+            android:height="60dp"
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/webViewBox"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <Button
+                android:id="@+id/closeWebView"
+                style="@style/AppTheme"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/colorIcons"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rufe (Close)"
+                android:layout_margin="5dp"
+                android:textStyle="bold"
+                android:padding="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        <RelativeLayout
+                android:id="@+id/progressBar"
+                android:clickable="true"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

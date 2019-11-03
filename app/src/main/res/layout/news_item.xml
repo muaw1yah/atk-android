@@ -1,50 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="16dip">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@color/colorIcons"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:padding="20dip">
 
 
     <!-- Left Thumbnail image -->
 
     <ImageView
             android:id="@+id/img_thumbnail"
-            android:layout_width="100dip"
-            android:layout_height="100dip"
-            android:layout_marginBottom="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="0dp" />
+            android:layout_width="120dip"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Description -->
 
     <TextView
             android:id="@+id/description"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/img_thumbnail"
-            android:layout_toRightOf="@+id/img_thumbnail"
+            android:maxHeight="100dp"
+            app:layout_constraintHorizontal_weight="1"
+            android:layout_marginStart="20dp"
             android:textColor="#040404"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:typeface="sans"
+            android:fontFamily="@font/lato_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_thumbnail"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="This should be a long description like this example that I'm showing." />
-
 
     <!-- Time -->
 
     <TextView
             android:id="@+id/time"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/description"
-            android:layout_alignStart="@+id/description"
-            android:layout_below="@+id/description"
+            android:maxHeight="20dp"
             android:textColor="#343434"
             android:textSize="10sp"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/img_thumbnail"
             tools:ignore="SmallSp"
-            tools:text="12 hours ago" android:layout_marginLeft="4dp" android:layout_marginTop="37dp"
-            android:layout_marginStart="4dp"/>
+            tools:text="12 hours ago" />
 
-</RelativeLayout>
+    <ImageView
+            android:id="@+id/sourceImage"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:alpha="0.3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

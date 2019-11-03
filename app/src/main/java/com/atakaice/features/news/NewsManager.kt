@@ -23,7 +23,7 @@ class NewsManager(private val api: RestAPI = RestAPI()) {
                     val item = it
                     NewsItem(
                         item.author, item.title, item.pubDate, item.link, item.description,
-                        item.category, item.files
+                        item.category, files=item.files[0]
                     )
                 }
 

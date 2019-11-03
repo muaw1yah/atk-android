@@ -1,5 +1,6 @@
 package com.atakaice.actvities
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.navigation.NavigationView
@@ -14,8 +15,13 @@ import com.atakaice.R
 import com.atakaice.features.news.NewsCardFragment
 import com.atakaice.features.news.NewsCardsFragment
 import com.atakaice.features.news.NewsFragment
+import com.atakaice.features.news.repo.NewsItemViewModel
+import com.atakaice.fragments.AboutFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AboutFragment.OnFragmentInteractionListener {
+    override fun onFragmentInteraction(uri: Uri) {
+
+    }
 
     private var nvDrawer: NavigationView? = null
     private var drawerLayout: DrawerLayout? = null
@@ -78,10 +84,12 @@ class MainActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.nav_news_fragment -> changeFragment(NewsFragment())
 
-                R.id.nav_settings_fragment -> changeFragment(NewsCardsFragment())
+//                R.id.nav_settings_fragment -> changeFragment(NewsCardsFragment())
                 //            case R.id.nav_about_fragment:
                 //                fragmentClass = ThirdFragment.class;
                 //                break;
+                R.id.nav_about_fragment -> changeFragment(AboutFragment())
+
                 else -> changeFragment(NewsCardsFragment())
             }
 
@@ -90,7 +98,7 @@ class MainActivity : AppCompatActivity() {
         // Set action bar title
         title = menuItem.title ?: "Labarun Duniya"
         // Close the navigation drawer
-        drawerLayout!!.closeDrawers()
+        drawerLayout?.closeDrawers()
     }
 
 

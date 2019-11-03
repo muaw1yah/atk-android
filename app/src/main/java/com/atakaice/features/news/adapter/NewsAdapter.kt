@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.collection.SparseArrayCompat
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
+import com.atakaice.commons.NewsClickListener
 import com.atakaice.commons.NewsItem
 import com.atakaice.commons.adapter.*
 import java.lang.Exception
@@ -38,11 +39,14 @@ class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if(this.items[position].getViewType() == AdapterConstants.NEWS) {
+            holder.itemView.setOnClickListener(NewsClickListener(this.items[position] as NewsItem))
+        }
         delegateAdapters.get(getItemViewType(position))!!.onBindViewHolder(holder, this.items[position])
     }
 
     override fun getItemViewType(position: Int): Int {
-        return this.items.get(position).getViewType()
+        return this.items[position].getViewType()
     }
 
     fun addNews(news: List<NewsItem>) {

@@ -1,7 +1,5 @@
 package com.atakaice.features.news.adapter
 
-import android.view.View
-import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import com.atakaice.R
 import com.atakaice.commons.NewsItem
@@ -10,7 +8,10 @@ import com.atakaice.commons.adapter.ViewTypeCardsDelegateAdapter
 import com.atakaice.commons.extensions.inflate
 import com.atakaice.commons.extensions.loading
 import com.meetic.shuffle.Shuffle
+import kotlinx.android.synthetic.main.news_card.view.*
 import kotlinx.android.synthetic.main.news_item.view.*
+import kotlinx.android.synthetic.main.news_item.view.description
+import kotlinx.android.synthetic.main.news_item.view.img_thumbnail
 
 class NewsCardDelegateAdapter: ViewTypeCardsDelegateAdapter {
 
@@ -28,8 +29,12 @@ class NewsCardDelegateAdapter: ViewTypeCardsDelegateAdapter {
     ) {
 
         fun bind(item: NewsItem) = with(itemView) {
-            img_thumbnail.loading(item.files.get(0))
+            img_thumbnail.loading(item.files)
             description.text = item.title
+
+            //author.text = item.author
+            // time.text = item.pubDate.toLong().getFriendlyTime()
+
             //author.text = item.author
             // time.text = item.pubDate.toLong().getFriendlyTime()
         }

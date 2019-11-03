@@ -1,0 +1,43 @@
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.atakaice.fragments.AboutFragment">
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="152dp"
+            android:src="@drawable/banner" />
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:padding="20dp"
+            android:fontFamily="@font/lato_regular"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textColor="@color/colorSecondaryText"
+            android:text="Kafar yada labarai da take zakullo sahihan labarai daga ingantattun kafaffen samar da labarai"
+        />
+
+    <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
+            android:text="copyright &#169; Atakaice Inc. 2017"
+            android:layout_gravity="bottom"
+            android:textAlignment="center" />
+
+    <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:text="www.atakaice.com"
+            android:layout_gravity="bottom"
+            android:textAlignment="center" />
+</LinearLayout>

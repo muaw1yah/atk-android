@@ -2,10 +2,11 @@ package com.atakaice.commons
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.atakaice.commons.adapter.AdapterConstants
 import com.atakaice.commons.adapter.ViewType
 import com.atakaice.commons.extensions.createParcel
-import java.util.*
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 data class News(
@@ -38,18 +39,22 @@ data class News(
 
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+@Entity(tableName = "news_item")
 data class NewsItem(
     val author: String,
     val title: String,
     val pubDate: String,
+
+    @PrimaryKey
     val link: String,
+
     val description: String,
     val category: String,
-    val files: List<String>
-) : ViewType, Parcelable {
+    val files: String
+    ) : ViewType, Parcelable {
 
     companion object {
-        @JvmField @Suppress("unused")
+        @JvmField
         val CREATOR = createParcel { NewsItem(it) }
     }
 
@@ -60,7 +65,7 @@ data class NewsItem(
         parcelIn.readString(),
         parcelIn.readString(),
         parcelIn.readString(),
-        mutableListOf<String>()
+        parcelIn.readString()
     )
 
     override fun writeToParcel(dest: Parcel, p1: Int) {
@@ -70,7 +75,7 @@ data class NewsItem(
         dest.writeString(link)
         dest.writeString(description)
         dest.writeString(category)
-        dest.writeArray(arrayOf(files))
+        dest.writeString(files)
     }
 
     override fun describeContents() = 0

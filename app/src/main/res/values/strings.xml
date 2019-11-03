@@ -10,4 +10,7 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="news_image_title">news_image</string>
+    <string name="news_description_placeholder">News description placeholder</string>
+    <string name="news_title_placeholder">News title placeholder</string>
+    <string name="publish_time_placeholder">publish time placeholder</string>
 </resources>

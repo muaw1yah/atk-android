@@ -1,6 +1,6 @@
 package com.atakaice.features.news.adapter
 
-import android.os.Build
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
@@ -13,8 +13,6 @@ import com.atakaice.commons.extensions.inflate
 import com.atakaice.commons.extensions.loading
 import kotlinx.android.synthetic.main.news_item.view.*
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.util.*
 
 class NewsDelegateAdapter: ViewTypeDelegateAdapter {
 
@@ -31,14 +29,22 @@ class NewsDelegateAdapter: ViewTypeDelegateAdapter {
         parent.inflate(R.layout.news_item)
     ) {
 
+        @SuppressLint("SimpleDateFormat")
         fun bind(item: NewsItem) = with(itemView) {
             try {
-                img_thumbnail.loading(item.files.get(0))
-                var title = if (item.title.length > 100) item.title.substring(100)+"..." else item.title
-                description.text = title + " - " + item.author
+                img_thumbnail.loading(item.files)
+                description.text = item.title
 
-                var d = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").parse(item.pubDate)
+                val d = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").parse(item.pubDate)
                 time.text = (d.time / 1000).getFriendlyTime()
+
+                when (item.author.trim().toLowerCase()) {
+                    "bbc" -> sourceImage.setImageResource(R.drawable.bbc)
+                    "rfi" -> sourceImage.setImageResource(R.drawable.rfi)
+                    "voa" -> sourceImage.setImageResource(R.drawable.voa)
+                    "dw" -> sourceImage.setImageResource(R.drawable.dw)
+                    else -> Log.i("SOURCE", item.author)
+                }
             } catch (e: Exception) {
                 Log.e("BIND", e.message)
             }
